@@ -1,20 +1,24 @@
+//include area
 const Discord = require('discord.js');
 const { on } = require('nodemon');
 const holo = new Discord.Client();
 const { token, prefix } = require('./Config/Config.json');
 
+//actions of bot ready
 holo.on('ready', () => {
   holo.user.setPresence({ status: 'dnd', activity: { name: `Powered by YuukiAyano | Using / help`, type: 'STREAMING' } });
   console.log(`Logged in as ${holo.user.tag}!`);
   console.log(`Bot Author is ${holo.author}`);
 });
 
+//commands with out prefix
 holo.on('message', (msg) => {
   if (msg.content === '標我') {
     msg.channel.send(`${msg.author}`);
   }
 });
 
+//commands require prefix
 holo.on('message', (msg) => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
@@ -73,4 +77,11 @@ holo.on('message', (msg) => {
   }
 });
 
+//auto add role to new members
+holo.on('guildMemberAdd', (member) => {
+  console.log('User' + member.user.username + 'has joined the server!');
+  var role = member.guild.roles.find('name', '訪客');
+  member.addRole(role);
+});
+//login
 holo.login(token);
