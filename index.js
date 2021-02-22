@@ -6,7 +6,7 @@ const { token, prefix } = require('./Config/Config.json');
 
 //actions of bot ready
 holo.on('ready', () => {
-  holo.user.setPresence({ status: 'dnd', activity: { name: `Powered by YuukiAyano | Using / help`, type: 'STREAMING' } });
+  holo.user.setPresence({ activity: { name: 'Powered by 結城あやの | Using /help', type: 'STREAMING' }, status: 'dnd' });
   console.log(`Logged in as ${holo.user.tag}!`);
   console.log(`Bot Author is ${holo.author}`);
 });
@@ -79,9 +79,13 @@ holo.on('message', (msg) => {
 
 //auto add role to new members
 holo.on('guildMemberAdd', (member) => {
-  console.log('User' + member.user.username + 'has joined the server!');
-  var role = member.guild.roles.find('name', '訪客');
-  member.addRole(role);
+  console.log('User ' + member.user.username + ' has joined the server!');
+  var role = member.guild.roles.cache.find(role => role.name == "訪客")
+  member.roles.add(role);
 });
+/*const role = <guild>.roles.cache.find(role => role.name === '<role name>');
+const member = <message>.mentions.members.first();
+member.roles.add(role);
+*/
 //login
 holo.login(token);
