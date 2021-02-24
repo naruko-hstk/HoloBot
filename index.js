@@ -56,11 +56,6 @@ holo.on('message', (msg) => {
           value: 'warn: 警告使用者\nkick: 踢出使用者\nban: 封禁使用者\nmute: 水桶使用者',
           inline: true,
         },
-        /*{
-                    name: '',
-                    value:'',
-                    inline:false
-                },*/
         {
           name: '娛樂功能',
           value: '@role: 提醒特定身分組活動',
@@ -83,9 +78,8 @@ holo.on('guildMemberAdd', (member) => {
   var role = member.guild.roles.cache.find(role => role.name == "訪客")
   member.roles.add(role);
 });
-/*const role = <guild>.roles.cache.find(role => role.name === '<role name>');
-const member = <message>.mentions.members.first();
-member.roles.add(role);
-*/
+
+//reaction role
+
 //login
 holo.login(token);
