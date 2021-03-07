@@ -34,8 +34,7 @@ holo.on('message', (msg) => {
 
   if (command === 'ping') {
     msg.channel.send(`Pong!\n延遲${0 - (Date.now() - msg.createdTimestamp)}ms.`);
-  }
-  if (command === 'help' || 'h') {
+  } else if (command === 'help' || 'h') {
     const help = new Discord.MessageEmbed()
       .setColor('#0F1D57')
       .setTitle('Help')
@@ -64,6 +63,36 @@ holo.on('message', (msg) => {
       )
       .setFooter('Copyright © 結城あやの From SJ Bots');
     msg.channel.send(help);
+  } else if (command === 'react') {
+    message.react(
+      ':YAGOO_AND_GUN:',
+      ':watame_2:',
+      ':watame_1:',
+      ':Wake_up:',
+      ':Waifu:',
+      ':uto_1:',
+      ':suisei_2:',
+      ':sora_1:',
+      ':shion_1:',
+      ':rushia_6:',
+      ':rushia_5:',
+      ':rushia_4:',
+      ':rushia_3:',
+      ':rushia_2:',
+      ':rushia_1:',
+      ':polka_1:',
+      ':pekora_4:',
+      ':pekora_3:',
+      ':pekora_1:',
+      ':pekora_2:',
+      ':padoru_aloe:',
+      ':okayu_1:',
+      ':noel_1:',
+      ':neee_ayame:',
+      ':neee_aqua:',
+      ':neee_anemachi:',
+      ':Nakiri_axe:'
+    );
   }
   //TODO: get info command
 });
