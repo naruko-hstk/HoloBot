@@ -2,7 +2,9 @@
 const Discord = require('discord.js');
 const { on } = require('nodemon');
 const holo = new Discord.Client();
-const { token, prefix, ReactionRoleMessage } = require('./Config/Config.json');
+require('dotenv').config();
+const prefix = process.env.prefix;
+const { ReactionRoleMessage } = require('./Config/Config.json');
 
 //actions of bot ready
 holo.on('ready', () => {
@@ -206,4 +208,4 @@ holo.on('messageReactionRemove', async (reaction, user) => {
   } else return;
 });
 //login
-holo.login(token);
+holo.login(process.env.token);
