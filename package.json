@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
     "env": "^0.0.2",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.7"
   }
 }
