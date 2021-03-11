@@ -7,75 +7,69 @@ const prefix = process.env.prefix;
 const { ReactionRoleMessage } = require('./Config/Config.json');
 const fs = require('fs');
 
+//Extension init
 holo.commands = new Discord.Collection();
 const commandCore = fs.readdirSync('./Extension/Core').filter((file) => file.endsWith('.js'));
+const commandError = fs.readdirSync('./Extension/Error').filter((file) => file.endsWith('.js'));
 const commandEvents = fs.readdirSync('./Extension/Events').filter((file) => file.endsWith('.js'));
 const commandFun = fs.readdirSync('./Extension/Fun').filter((file) => file.endsWith('.js'));
 const commandModerations = fs.readdirSync('./Extension/Moderations').filter((file) => file.endsWith('.js'));
 const commandUtilities = fs.readdirSync('./Extension/Utilities').filter((file) => file.endsWith('.js'));
 
+//Call Extension
 for (const file of commandCore) {
   const command = require(`./Extension/Core/${file}`);
-
-  // set a new item in the Collection
-  // with the key as the command name and the value as the exported module
+  holo.commands.set(command.name, command);
+}
+for (const file of commandError) {
+  const command = require(`./Extension/Error/${file}`);
   holo.commands.set(command.name, command);
 }
 for (const file of commandEvents) {
   const command = require(`./Extension/Events/${file}`);
-
-  // set a new item in the Collection
-  // with the key as the command name and the value as the exported module
   holo.commands.set(command.name, command);
 }
 for (const file of commandFun) {
   const command = require(`./Extension/Fun/${file}`);
-
-  // set a new item in the Collection
-  // with the key as the command name and the value as the exported module
   holo.commands.set(command.name, command);
 }
 for (const file of commandModerations) {
   const command = require(`./Extension/Moderations/${file}`);
-
-  // set a new item in the Collection
-  // with the key as the command name and the value as the exported module
   holo.commands.set(command.name, command);
 }
 for (const file of commandUtilities) {
   const command = require(`./Extension/Utilities/${file}`);
-
-  // set a new item in the Collection
-  // with the key as the command name and the value as the exported module
   holo.commands.set(command.name, command);
 }
-//actions of bot ready
+
+//Actions of bot ready
 holo.on('ready', () => {
   holo.user.setPresence({ activity: { name: 'Powered by 結城あやの | Using /help', type: 'STREAMING' }, status: 'dnd' });
   console.log(`Logged in as ${holo.user.tag}!`);
   console.log(`Bot Author is ${holo.author}`);
 });
 
-//commands with out prefix
+//Commands with out prefix
 holo.on('message', (msg) => {
   if (msg.content === '標我') {
     holo.commands.get('tag').execute(msg);
   }
 });
 
-//commands require prefix
+//Commands require prefix
 holo.on('message', (msg) => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
 
-  /*
   if (command === 'shutdown') {
-    //TODO: Set this command owner only!!!
-    msg.channel.send(`Goodbye! ${Discord.Guild.name}`);
+    if (msg.author.id === '277389659947008001' || msg.author.id === '487804795902492712') {
+      holo.commands.get('shutdown').execute(msg, args);
+    } else {
+      holo.commands.get('shutdownerror').execute(msg, args);
+    }
   }
-  */
 
   if (command === 'ping') {
     holo.commands.get('ping').execute(msg, args);
@@ -85,13 +79,12 @@ holo.on('message', (msg) => {
   //TODO: get info command
 });
 
-//auto add role to new members
+//Auto add role to new members
 holo.on('guildMemberAdd', (member) => {
   holo.commands.get('welcome').execute(member);
 });
 
-//reaction role
-
+//Reaction role
 holo.on('messageReactionAdd', async (reaction, user) => {
   if (reaction.message.partial) await reaction.message.fetch();
   if (reaction.partial) await reaction.fetch();
@@ -221,5 +214,6 @@ holo.on('messageReactionRemove', async (reaction, user) => {
     }
   } else return;
 });
-//login
+
+//Login
 holo.login(process.env.token);
