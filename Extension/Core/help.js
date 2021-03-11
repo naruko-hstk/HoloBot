@@ -14,20 +14,24 @@ module.exports = {
           value: 'help: 顯示此列表',
         },
         {
-          name: '實用功能',
-          value: 'ping: 測試延遲',
+          name: '自訂指令||我也不知道到底有哪些功能||',
+          value: '日麻\ncomet\nshiar\nshig\nskill\nui\nvote\nばかみたい',
         },
         {
-          name: '管理功能',
-          value: 'warn: 警告使用者\nkick: 踢出使用者\nban: 封禁使用者\nmute: 水桶使用者\n||本區功能尚未實裝||',
+          name: '無須前綴指令',
+          value: '標我: 標註自己',
         },
         {
           name: '娛樂功能',
           value: '@role: 提醒特定身分組活動\n||本區功能尚未實裝||',
         },
         {
-          name: '無須前綴指令',
-          value: '標我: 標註自己',
+          name: '管理功能',
+          value: 'warn: 警告使用者\nkick: 踢出使用者\nban: 封禁使用者\nmute: 水桶使用者\n||本區功能尚未實裝||',
+        },
+        {
+          name: '實用功能',
+          value: 'ping: 測試延遲',
         }
       )
       .setFooter('Copyright © 結城あやの From SJ Bots');
