@@ -107,9 +107,9 @@ holo.on('message', (msg) => {
     holo.commands.get('vote').execute(msg);
   } else if (command === 'ばかみたい') {
     holo.commands.get('ばかみたい').execute(msg);
+  } else if (command === 'comet') {
+    holo.commands.get('comet').execute(msg);
   } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
     holo.commands.get('shig').execute(msg);
   } else if (command === '') {
     holo.commands.get('shig').execute(msg);
