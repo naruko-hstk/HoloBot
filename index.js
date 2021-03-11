@@ -10,6 +10,7 @@ const fs = require('fs');
 //Extension init
 holo.commands = new Discord.Collection();
 const commandCore = fs.readdirSync('./Extension/Core').filter((file) => file.endsWith('.js'));
+const commandCustom = fs.readdirSync('./Extension/Custom').filter((file) => file.endsWith('.js'));
 const commandError = fs.readdirSync('./Extension/Error').filter((file) => file.endsWith('.js'));
 const commandEvents = fs.readdirSync('./Extension/Events').filter((file) => file.endsWith('.js'));
 const commandFun = fs.readdirSync('./Extension/Fun').filter((file) => file.endsWith('.js'));
@@ -19,6 +20,10 @@ const commandUtilities = fs.readdirSync('./Extension/Utilities').filter((file) =
 //Call Extension
 for (const file of commandCore) {
   const command = require(`./Extension/Core/${file}`);
+  holo.commands.set(command.name, command);
+}
+for (const file of commandCustom) {
+  const command = require(`./Extension/Custom/${file}`);
   holo.commands.set(command.name, command);
 }
 for (const file of commandError) {
@@ -52,7 +57,7 @@ holo.on('ready', () => {
 holo.on('message', (msg) => {
   if (msg.content === '標我') {
     if (msg.channel.id !== '819553695766413334') {
-      msg.channel.send('請至<#819553695766413334>使用')
+      msg.channel.send('請至<#819553695766413334>使用');
     } else {
       // if (msg.author.id === '607446184847605800') {
       // msg.channel.send('我完全不想理你=.=')
@@ -88,7 +93,37 @@ holo.on('message', (msg) => {
     holo.commands.get('help').execute(msg);
   } else if (command === 'ping') {
     holo.commands.get('ping').execute(msg);
-  } else {
+  } else if (command === 'shig') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === 'ui') {
+    holo.commands.get('ui').execute(msg);
+  } else if (command === 'skill') {
+    holo.commands.get('skill').execute(msg);
+  } else if (command === '日麻') {
+    holo.commands.get('日麻').execute(msg);
+  } else if (command === 'shiar') {
+    holo.commands.get('shiar').execute(msg);
+  } else if (command === 'vote') {
+    holo.commands.get('vote').execute(msg);
+  } else if (command === 'ばかみたい') {
+    holo.commands.get('ばかみたい').execute(msg);
+  } /*else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } else if (command === '') {
+    holo.commands.get('shig').execute(msg);
+  } */ else {
     return;
   }
   //TODO: get info command
