@@ -46,13 +46,26 @@ for (const file of commandUtilities) {
 holo.on('ready', () => {
   holo.user.setPresence({ activity: { name: 'Powered by 結城あやの | Using /help', type: 'STREAMING' }, status: 'dnd' });
   console.log(`Logged in as ${holo.user.tag}!`);
-  console.log(`Bot Author is ${holo.author}`);
 });
 
 //Commands with out prefix
 holo.on('message', (msg) => {
   if (msg.content === '標我') {
-    holo.commands.get('tag').execute(msg);
+    if (msg.channel.id !== '819553695766413334') {
+      msg.channel.send('請至<#819553695766413334>使用')
+    } else {
+      // if (msg.author.id === '607446184847605800') {
+      // msg.channel.send('我完全不想理你=.=')
+      // } else if (msg.author.id === '573089564051111937') {
+      // msg.channel.send('再說')
+      // } else if (msg.author.id === '277389659947008001') {
+      // msg.channel.send('作者還敢玩啊')
+      // } else if (msg.author.id === '487804795902492712') {
+      // msg.channel.send('你不要以為你開小號我就不會發現')
+      // } else {
+      holo.commands.get('tag').execute(msg);
+      // }
+    }
   }
 });
 
@@ -65,16 +78,18 @@ holo.on('message', (msg) => {
 
   if (command === 'shutdown') {
     if (msg.author.id === '277389659947008001' || msg.author.id === '487804795902492712') {
-      holo.commands.get('shutdown').execute(msg, args);
+      holo.commands.get('shutdown').execute(msg);
     } else {
-      holo.commands.get('shutdownerror').execute(msg, args);
+      holo.commands.get('shutdownerror').execute(msg);
     }
-  }
-
-  if (command === 'ping') {
-    holo.commands.get('ping').execute(msg, args);
-  } else if (command === 'help' || 'h') {
-    holo.commands.get('help').execute(msg, args);
+  } else if (command === 'help') {
+    holo.commands.get('help').execute(msg);
+  } else if (command === 'h') {
+    holo.commands.get('help').execute(msg);
+  } else if (command === 'ping') {
+    holo.commands.get('ping').execute(msg);
+  } else {
+    return;
   }
   //TODO: get info command
 });

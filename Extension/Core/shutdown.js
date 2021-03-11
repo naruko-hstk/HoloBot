@@ -1,8 +1,8 @@
 module.exports = {
   name: 'shutdown',
   description: 'shutdown bot',
-  execute(msg, args) {
-    msg.channel.send(`Goodbye!`);
+  execute(msg) {
+    msg.reply('Goodbye!');
     process.exit(0);
   },
 };

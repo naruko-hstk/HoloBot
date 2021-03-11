@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 module.exports = {
   name: 'help',
   description: 'Help Menu',
-  execute(msg, args) {
+  aliases: ['h'],
+  execute(msg) {
     const help = new Discord.MessageEmbed()
       .setColor('#0F1D57')
       .setTitle('Help')
