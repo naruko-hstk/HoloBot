@@ -71,35 +71,35 @@ holo.on('message', (msg) => {
       holo.commands.get('tag').execute(msg);
       // }
     }
-  } else if (command === 'shig') {
+  } else if (msg.content === 'shig') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === 'ui') {
+  } else if (msg.content === 'ui') {
     holo.commands.get('ui').execute(msg);
-  } else if (command === 'skill') {
+  } else if (msg.content === 'skill') {
     holo.commands.get('skill').execute(msg);
-  } else if (command === '日麻') {
+  } else if (msg.content === '日麻') {
     holo.commands.get('日麻').execute(msg);
-  } else if (command === 'shiar') {
+  } else if (msg.content === 'shiar') {
     holo.commands.get('shiar').execute(msg);
-  } else if (command === 'vote') {
+  } else if (msg.content === 'vote') {
     holo.commands.get('vote').execute(msg);
-  } else if (command === 'ばかみたい') {
+  } else if (msg.content === 'ばかみたい') {
     holo.commands.get('ばかみたい').execute(msg);
-  } else if (command === 'comet') {
+  } else if (msg.content === 'comet') {
     holo.commands.get('comet').execute(msg);
-  } else if (command === '午餐ㄘ啥') {
+  } else if (msg.content === '午餐ㄘ啥') {
     holo.commands.get('午餐ㄘ啥').execute(msg);
-  } /*else if (command === '') {
+  } /*else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } else if (msg.content === '') {
     holo.commands.get('shig').execute(msg);
   } */else {
     return;
