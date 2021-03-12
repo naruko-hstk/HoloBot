@@ -14,7 +14,7 @@ module.exports = {
           value: 'help: 顯示此列表',
         },
         {
-          name: '自訂指令||我也不知道到底有哪些功能||',
+          name: '自訂指令(可以忽略前綴)\n||我也不知道到底有哪些功能||',
           value: '午餐ㄘ啥\n日麻\ncomet\nshiar\nshig\nskill\nui\nvote\nばかみたい',
         },
         {
