@@ -47,6 +47,18 @@ for (const file of commandUtilities) {
   holo.commands.set(command.name, command);
 }
 
+//Connect to DB
+const connection = mysql.connection({
+  host: process.env.address,
+  user: process.env.account,
+  password: process.env.password,
+  database: process.env.database,
+});
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('DB has been connected.');
+});
+
 //Actions of bot ready
 holo.on('ready', () => {
   holo.user.setPresence({ activity: { name: 'Powered by 結城あやの | Using ~help', type: 'STREAMING' }, status: 'dnd' });
@@ -91,6 +103,8 @@ holo.on('message', (msg) => {
     holo.commands.get('餐點').execute(msg);
   } else if (msg.content === '晚餐ㄘ啥') {
     holo.commands.get('餐點').execute(msg);
+  } else if (msg.content === '幹話王') {
+    holo.commands.get('幹話王').execute(msg);
   } /*else if (msg.content === '') {
     holo.commands.get('').execute(msg);
   } /*else if (msg.content === '') {
@@ -99,9 +113,7 @@ holo.on('message', (msg) => {
     holo.commands.get('').execute(msg);
   } /*else if (msg.content === '') {
     holo.commands.get('').execute(msg);
-  } /*else if (msg.content === '') {
-    holo.commands.get('').execute(msg);
-  } */else {
+  } */ else {
     return;
   }
 });
@@ -145,6 +157,8 @@ holo.on('message', (msg) => {
     holo.commands.get('餐點').execute(msg);
   } else if (command === '晚餐ㄘ啥') {
     holo.commands.get('餐點').execute(msg);
+  } else if (command === '幹話王') {
+    holo.commands.get('幹話王').execute(msg);
   } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
   } /*else if (command === '') {
@@ -153,9 +167,7 @@ holo.on('message', (msg) => {
     holo.commands.get('shig').execute(msg);
   } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
-  } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
-  } */else {
+  } */ else {
     return;
   }
   //TODO: get info command

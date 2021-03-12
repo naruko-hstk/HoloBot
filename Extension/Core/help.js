@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: '自訂指令(可以忽略前綴)\n||我也不知道到底有哪些功能||',
-          value: '午餐ㄘ啥\n日麻\ncomet\nshiar\nshig\nskill\nui\nvote\nばかみたい',
+          value: '日麻\n幹話王\n午餐(晚餐)ㄘ啥\ncomet\nshiar\nshig\nskill\nui\nvote\nばかみたい',
         },
         {
           name: '無須前綴指令',
