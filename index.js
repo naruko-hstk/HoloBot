@@ -142,18 +142,18 @@ holo.on('message', (msg) => {
   } else if (command === 'comet') {
     holo.commands.get('comet').execute(msg);
   } else if (command === '午餐ㄘ啥') {
-    holo.commands.get('午餐ㄘ啥').execute(msg);
+    holo.commands.get('餐點').execute(msg);
+  } else if (command === '晚餐ㄘ啥') {
+    holo.commands.get('餐點').execute(msg);
   } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
-    holo.commands.get('shig').execute(msg);
-  } else if (command === '') {
+  } /*else if (command === '') {
     holo.commands.get('shig').execute(msg);
   } */else {
     return;

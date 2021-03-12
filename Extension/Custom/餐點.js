@@ -1,5 +1,5 @@
 module.exports = {
-  name: '午餐ㄘ啥',
+  name: '餐點',
   description: '食物合輯',
   execute(msg) {
     const messages = ['拉麵', '烏龍麵', '燒肉飯'];
