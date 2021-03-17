@@ -6,6 +6,7 @@ require('dotenv').config();
 const prefix = process.env.prefix;
 const { ReactionRoleMessage } = require('./Config/Config.json');
 const fs = require('fs');
+const mysql = require('mysql');
 
 //Extension init
 holo.commands = new Discord.Collection();
@@ -48,7 +49,7 @@ for (const file of commandUtilities) {
 }
 
 //Connect to DB
-const connection = mysql.connection({
+const connection = mysql.createConnection({
   host: process.env.address,
   user: process.env.account,
   password: process.env.password,
@@ -105,8 +106,8 @@ holo.on('message', (msg) => {
     holo.commands.get('餐點').execute(msg);
   } else if (msg.content === '幹話王') {
     holo.commands.get('幹話王').execute(msg);
-  } /*else if (msg.content === '') {
-    holo.commands.get('').execute(msg);
+  } else if (msg.content === '弟弟' || msg.content === '@⚓榭爾⚓#5939') {
+    holo.commands.get('弟弟').execute(msg);
   } /*else if (msg.content === '') {
     holo.commands.get('').execute(msg);
   } /*else if (msg.content === '') {
@@ -159,14 +160,14 @@ holo.on('message', (msg) => {
     holo.commands.get('餐點').execute(msg);
   } else if (command === '幹話王') {
     holo.commands.get('幹話王').execute(msg);
+  } else if (command === '弟弟') {
+    holo.commands.get('弟弟').execute(msg);
   } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
+    holo.commands.get('').execute(msg);
   } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
+    holo.commands.get('').execute(msg);
   } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
-  } /*else if (command === '') {
-    holo.commands.get('shig').execute(msg);
+    holo.commands.get('').execute(msg);
   } */ else {
     return;
   }
