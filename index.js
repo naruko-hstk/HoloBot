@@ -42,7 +42,7 @@ holo.on('ready', () => {
 });
 
 //command handler
-client.on('message', (msg) => {
+holo.on('message', (msg) => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
