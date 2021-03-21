@@ -1,5 +1,5 @@
 module.exports = {
-  name: fragments,
+  name: 'fragments',
   description: '查詢殘片數',
   execute(msg, args, connection) {
     if (!args.length) {

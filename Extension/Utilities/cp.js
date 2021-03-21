@@ -1,5 +1,5 @@
 module.exports = {
-  name: cp,
+  name: 'cp',
   description: '查詢CP點數數',
   execute(msg, args, connection) {
     if (!args.length) {

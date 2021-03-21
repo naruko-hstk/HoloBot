@@ -8,11 +8,11 @@ const mysql = require('mysql');
 
 //Extension init
 holo.commands = new Discord.Collection();
-const commandFolders = fs.readdirSync('./commands');
+const commandFolders = fs.readdirSync('./Extensions');
 for (const folder of commandFolders) {
-  const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
+  const commandFiles = fs.readdirSync(`./Extensions/${folder}`).filter((file) => file.endsWith('.js'));
   for (const file of commandFiles) {
-    const command = require(`./commands/${folder}/${file}`);
+    const command = require(`./Extensions/${folder}/${file}`);
     holo.commands.set(command.name, command);
   }
 }
@@ -42,49 +42,64 @@ holo.on('ready', () => {
 });
 
 //command handler
-holo.on('message', (msg) => {
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
+client.on('message', (msg) => {
+  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+
+  const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
 
-  const command = holo.commands.get(commandName) || holo.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
-  if (!command) {
-    if (msg.content === '標我') {
-      if (msg.channel.id !== '819553695766413334') msg.channel.send('請至<#819553695766413334>使用');
-      else holo.commands.get('tag').execute(msg);
-      // } else {
-      // if (msg.author.id === '607446184847605800') {
-      // msg.channel.send('我完全不想理你=.=');
-      // } else if (msg.author.id === '573089564051111937') {
-      // msg.channel.send('再說');
-      // } else if (msg.author.id === '277389659947008001') {
-      // msg.channel.send('作者還敢玩啊');
-      // } else if (msg.author.id === '487804795902492712') {
-      // msg.channel.send('你不要以為你開小號我就不會發現');
-      // } else {
-      // holo.commands.get('tag').execute(msg);
-      // }
-      // }
-    } else if (msg.content === 'shig') holo.commands.get('shig').execute(msg);
-    else if (msg.content === 'ui') holo.commands.get('ui').execute(msg);
-    else if (msg.content === 'skill') holo.commands.get('skill').execute(msg);
-    else if (msg.content === '日麻') holo.commands.get('日麻').execute(msg);
-    else if (msg.content === 'shiar') holo.commands.get('shiar').execute(msg);
-    else if (msg.content === 'vote') holo.commands.get('vote').execute(msg);
-    else if (msg.content === 'ばかみたい') holo.commands.get('ばかみたい').execute(msg);
-    else if (msg.content === 'comet') holo.commands.get('comet').execute(msg);
-    else if (msg.content === '午餐ㄘ啥') holo.commands.get('餐點').execute(msg);
-    else if (msg.content === '晚餐ㄘ啥') holo.commands.get('餐點').execute(msg);
-    else if (msg.content === '幹話王') holo.commands.get('幹話王').execute(msg);
-    else if (msg.content === '弟弟') holo.commands.get('弟弟').execute(msg);
-    // else if (msg.content === '') holo.commands.get('').execute(msg);
-    // else if (msg.content === '') holo.commands.get('').execute(msg);
-    // else if (msg.content === '') holo.commands.get('').execute(msg);
-    else return;
+  const command = client.commands.get(commandName) || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
+
+  if (!command) return;
+
+  if (command.guildOnly && msg.channel.type === 'dm') {
+    return msg.reply("I can't execute that command inside DMs!");
   }
+
+  if (command.permissions) {
+    const authorPerms = msg.channel.permissionsFor(msg.author);
+    if (!authorPerms || !authorPerms.has(command.permissions)) {
+      return msg.reply('You can not do this!');
+    }
+  }
+
+  if (command.args && !args.length) {
+    let reply = `You didn't provide any arguments, ${msg.author}!`;
+
+    if (command.usage) {
+      reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+    }
+
+    return msg.channel.send(reply);
+  }
+
+  const { cooldowns } = client;
+
+  if (!cooldowns.has(command.name)) {
+    cooldowns.set(command.name, new Discord.Collection());
+  }
+
+  const now = Date.now();
+  const timestamps = cooldowns.get(command.name);
+  const cooldownAmount = (command.cooldown || 3) * 1000;
+
+  if (timestamps.has(msg.author.id)) {
+    const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
+
+    if (now < expirationTime) {
+      const timeLeft = (expirationTime - now) / 1000;
+      return msg.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+    }
+  }
+
+  timestamps.set(msg.author.id, now);
+  setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
+
   try {
-    command.execute(message, args, connection);
-  } catch (e) {
-    console.error(e);
+    command.execute(msg, args);
+  } catch (error) {
+    console.error(error);
+    msg.reply('there was an error trying to execute that command!');
   }
 });
 
