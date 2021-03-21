@@ -5,7 +5,6 @@ module.exports = {
   execute(msg) {
     let target = msg.mentions.users.first() || msg.author;
     let img = target.avatarURL({ format: 'png', size: 4096 });
-    let message = msg.channel.send(`正在生成${target}的資料`);
     let info = new Discord.MessageEmbed()
       .setAuthor(`${target.username}`, `${img}`)
       .setDescription(`這是關於${target}的資訊`)
@@ -27,6 +26,5 @@ module.exports = {
       )
       .setFooter('Powered by 結城あやの');
     msg.channel.send(info);
-    message.delete();
   },
 };
