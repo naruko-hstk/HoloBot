@@ -162,8 +162,8 @@ holo.on('message', (msg) => {
     holo.commands.get('幹話王').execute(msg);
   } else if (command === '弟弟') {
     holo.commands.get('弟弟').execute(msg);
-  } /*else if (command === '') {
-    holo.commands.get('').execute(msg);
+  } else if (command === 'info') {
+    holo.commands.get('info').execute(msg);
   } /*else if (command === '') {
     holo.commands.get('').execute(msg);
   } /*else if (command === '') {
