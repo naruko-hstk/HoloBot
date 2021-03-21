@@ -3,7 +3,7 @@ module.exports = {
   name: 'help',
   description: 'Help Menu',
   aliases: ['h'],
-  execute(msg) {
+  execute(msg, args) {
     const help = new Discord.MessageEmbed()
       .setColor('#0F1D57')
       .setTitle('Help')
