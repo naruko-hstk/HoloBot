@@ -43,41 +43,73 @@ holo.on('ready', () => {
 
 //command handler
 holo.on('message', (msg) => {
-  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
 
   const command = holo.commands.get(commandName) || holo.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
-  if (!command) return;
-
-  if (command.guildOnly && msg.channel.type === 'dm') {
-    return msg.reply("I can't execute that command inside DMs!");
-  }
-
-  if (command.permissions) {
-    const authorPerms = msg.channel.permissionsFor(msg.author);
-    if (!authorPerms || !authorPerms.has(command.permissions)) {
-      return msg.reply('You can not do this!');
+  if (!msg.content.startsWith(prefix) || msg.author.bot) {
+    if (msg.content === '標我') {
+      if (msg.channel.id !== '819553695766413334') msg.channel.send('請至<#819553695766413334>使用');
+      else holo.commands.get('tag').execute(msg);
+      // } else {
+      // if (msg.author.id === '607446184847605800') {
+      // msg.channel.send('我完全不想理你=.=');
+      // } else if (msg.author.id === '573089564051111937') {
+      // msg.channel.send('再說');
+      // } else if (msg.author.id === '277389659947008001') {
+      // msg.channel.send('作者還敢玩啊');
+      // } else if (msg.author.id === '487804795902492712') {
+      // msg.channel.send('你不要以為你開小號我就不會發現');
+      // } else {
+      // holo.commands.get('tag').execute(msg);
+      // }
+      // }
+    } else if (msg.content === 'shig') holo.commands.get('shig').execute(msg);
+    else if (msg.content === 'ui') holo.commands.get('ui').execute(msg);
+    else if (msg.content === 'skill') holo.commands.get('skill').execute(msg);
+    else if (msg.content === '日麻') holo.commands.get('日麻').execute(msg);
+    else if (msg.content === 'shiar') holo.commands.get('shiar').execute(msg);
+    else if (msg.content === 'vote') holo.commands.get('vote').execute(msg);
+    else if (msg.content === 'ばかみたい') holo.commands.get('ばかみたい').execute(msg);
+    else if (msg.content === 'comet') holo.commands.get('comet').execute(msg);
+    else if (msg.content === '午餐ㄘ啥') holo.commands.get('餐點').execute(msg);
+    else if (msg.content === '晚餐ㄘ啥') holo.commands.get('餐點').execute(msg);
+    else if (msg.content === '幹話王') holo.commands.get('幹話王').execute(msg);
+    else if (msg.content === '弟弟') holo.commands.get('弟弟').execute(msg);
+    // else if (msg.content === '') holo.commands.get('').execute(msg);
+    // else if (msg.content === '') holo.commands.get('').execute(msg);
+    // else if (msg.content === '') holo.commands.get('').execute(msg);
+    else return;
+  } else if (!command) return;
+  else {
+    if (command.guildOnly && msg.channel.type === 'dm') {
+      return msg.reply("I can't execute that command inside DMs!");
     }
-  }
 
-  if (command.args && !args.length) {
-    let reply = `You didn't provide any arguments, ${msg.author}!`;
-
-    if (command.usage) {
-      reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+    if (command.permissions) {
+      const authorPerms = msg.channel.permissionsFor(msg.author);
+      if (!authorPerms || !authorPerms.has(command.permissions)) {
+        return msg.reply('You can not do this!');
+      }
     }
 
-    return msg.channel.send(reply);
-  }
+    if (command.args && !args.length) {
+      let reply = `You didn't provide any arguments, ${msg.author}!`;
 
-  try {
-    command.execute(msg, args);
-  } catch (error) {
-    console.error(error);
-    msg.reply('there was an error trying to execute that command!');
+      if (command.usage) {
+        reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+      }
+
+      return msg.channel.send(reply);
+    }
+
+    try {
+      command.execute(msg, args, connection);
+    } catch (error) {
+      console.error(error);
+      msg.reply('there was an error trying to execute that command!');
+    }
   }
 });
 
