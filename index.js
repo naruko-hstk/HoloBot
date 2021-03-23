@@ -95,13 +95,13 @@ holo.on('message', (msg) => {
     }
 
     /* if (command.args && !args.length) {
-      let reply = `You didn't provide any arguments, ${msg.author}!`;
+      let reply = `您未提供任何參數!`;
 
       if (command.usage) {
-        reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+        reply += `\n這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``;
       }
 
-      return msg.channel.send(reply);
+      return msg.reply(reply);
     } */
 
     try {
