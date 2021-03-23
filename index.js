@@ -84,17 +84,17 @@ holo.on('message', (msg) => {
   } else if (!command) return;
   else {
     if (command.guildOnly && msg.channel.type === 'dm') {
-      return msg.reply("I can't execute that command inside DMs!");
+      return msg.reply('這條指令無法在DM執行!');
     }
 
     if (command.permissions) {
       const authorPerms = msg.channel.permissionsFor(msg.author);
       if (!authorPerms || !authorPerms.has(command.permissions)) {
-        return msg.reply('You can not do this!');
+        return msg.reply(`您**無法**這麼做\n原因：缺少權限 **${command.permissions}**`);
       }
     }
 
-    if (command.args && !args.length) {
+    /* if (command.args && !args.length) {
       let reply = `You didn't provide any arguments, ${msg.author}!`;
 
       if (command.usage) {
@@ -102,13 +102,13 @@ holo.on('message', (msg) => {
       }
 
       return msg.channel.send(reply);
-    }
+    } */
 
     try {
       command.execute(msg, args, connection);
     } catch (error) {
       console.error(error);
-      msg.reply('there was an error trying to execute that command!');
+      msg.channel.send(`<@277389659947008001>Bot炸啦\n<@487804795902492712>Bot炸啦\n\`\`\`${error}\`\`\``);
     }
   }
 });
