@@ -28,10 +28,10 @@ module.exports = {
       });
     }
     else if (args[0] === 'add') {
-      connection.query(`SELECT * FROM chaosjudge.fragment WHERE ID = '${msg.author.id}';`, (err, rows) => {
+      let targetID = msg.mentions.users.first().id;
+      connection.query(`SELECT * FROM chaosjudge.fragment WHERE ID = '${targetID}';`, (err, rows) => {
         if (err) throw err;
         let fragmentscount = rows[0].fragments;
-        let targetID = msg.mentions.users.first().id;
         if (rows.length < 1) connection.query(`INSERT INTO chaosjudge.fragment (ID, fragments) VALUES('${targetID}', '${args[2]}');`);
         else connection.query(`UPDATE chaosjudge.fragment SET fragments = '${fragmentscount + parseInt(args[2])}' WHERE ID = '${targetID}';`);
         const fragmentupdated = new Discord.MessageEmbed()

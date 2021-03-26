@@ -27,10 +27,10 @@ module.exports = {
       });
     }
     else if (args[0] === 'add') {
-      connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${msg.author.id}';`, (err, rows) => {
+      let targetID = msg.mentions.users.first().id;
+      connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${targetID}';`, (err, rows) => {
         if (err) throw err;
         let CygamesPointcount = rows[0].CygamesPoint;
-        let targetID = msg.mentions.users.first().id;
         if (rows.length < 1) connection.query(`INSERT INTO chaosjudge.cp (ID, CygamesPoint) VALUES('${targetID}', '${args[2]}');`);
         else connection.query(`UPDATE chaosjudge.cp SET CygamesPoint = '${CygamesPointcount + parseInt(args[2])}' WHERE ID = '${targetID}';`);
         const cpupdated = new Discord.MessageEmbed()
