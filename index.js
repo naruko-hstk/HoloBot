@@ -107,7 +107,6 @@ holo.on('message', (msg) => {
     try {
       command.execute(msg, args, connection);
     } catch (error) {
-      console.error(error);
       msg.channel.send(`<@277389659947008001>Bot炸啦\n<@487804795902492712>Bot炸啦\n\`\`\`${error}\`\`\``);
     }
   }
