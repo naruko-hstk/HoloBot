@@ -94,18 +94,18 @@ holo.on('message', (msg) => {
       }
     }
 
-    /* if (command.args && !args.length) {
+    if (command.args && !args.length) {
       let reply = `您未提供任何參數!`;
 
       if (command.usage) {
-        reply += `\n這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``;
+        reply += `\n這條指令的用法應該要像這樣： \`${prefix}${command.name} ${command.usage}\``;
       }
 
       return msg.reply(reply);
-    } */
+    }
 
     try {
-      command.execute(msg, args, connection);
+      command.execute(msg, args, connection, prefix, command);
     } catch (error) {
       msg.channel.send(`<@277389659947008001>Bot炸啦\n<@487804795902492712>Bot炸啦\n\`\`\`${error}\`\`\``);
     }
@@ -178,9 +178,9 @@ holo.on('message', (msg) => {
 }); */
 
 //Auto add role to new members
-// holo.on('guildMemberAdd', (member) => {
-//   holo.commands.get('welcome').execute(member);
-// });
+holo.on('guildMemberAdd', (member) => {
+  holo.commands.get('welcome').execute(member);
+});
 
 //Reaction role
 
