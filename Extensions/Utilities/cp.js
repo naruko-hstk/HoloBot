@@ -30,9 +30,11 @@ module.exports = {
       let targetID = msg.mentions.users.first().id;
       connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${targetID}';`, (err, rows) => {
         if (err) throw err;
-        let CygamesPointcount = rows[0].CygamesPoint;
         if (rows.length < 1) connection.query(`INSERT INTO chaosjudge.cp (ID, CygamesPoint) VALUES('${targetID}', '${args[2]}');`);
-        else connection.query(`UPDATE chaosjudge.cp SET CygamesPoint = '${CygamesPointcount + parseInt(args[2])}' WHERE ID = '${targetID}';`);
+        else {
+          let CygamesPointcount = rows[0].CygamesPoint;
+          connection.query(`UPDATE chaosjudge.cp SET CygamesPoint = '${CygamesPointcount + parseInt(args[2])}' WHERE ID = '${targetID}';`);
+        }
         const cpupdated = new Discord.MessageEmbed()
           .setColor('#0F1D57')
           .setTitle('系統通知')
