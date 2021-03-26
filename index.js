@@ -178,9 +178,9 @@ holo.on('message', (msg) => {
 }); */
 
 //Auto add role to new members
-holo.on('guildMemberAdd', (member) => {
-  holo.commands.get('welcome').execute(member);
-});
+// holo.on('guildMemberAdd', (member) => {
+//   holo.commands.get('welcome').execute(member);
+// });
 
 //Reaction role
 
