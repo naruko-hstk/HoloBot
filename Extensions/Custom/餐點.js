@@ -1,6 +1,7 @@
 module.exports = {
   name: '餐點',
   description: '食物合輯',
+  aliases: ['午餐ㄘ啥', '午餐吃啥', '午餐？', '午餐?', '晚餐ㄘ啥', '晚餐吃啥', '晚餐？', '晚餐?'],
   execute(msg) {
     const messages = [
       '拉麵',
@@ -30,7 +31,7 @@ module.exports = {
       '麥當勞',
       '雞排',
       '鹹酥雞',
-      '青醬海鮮義大利麵'
+      '青醬海鮮義大利麵',
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     msg.channel.send(randomMessage);

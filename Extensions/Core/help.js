@@ -1,31 +1,49 @@
-/* module.exports = {
+module.exports = {
   name: 'help',
   description: 'List all of my commands or info about a specific command.',
   aliases: ['commands'],
   usage: '[command name]',
   cooldown: 5,
-  execute(message, args) {
-    const { prefix } = process.env.prefix;
+  execute(msg, args, prefix) {
+    console.log(prefix);
+    const data = [];
+    const { commands } = msg.client;
+
+    if (!args.length) {
+      data.push('這是我能使用的指令列表(部分為反映指令無須前綴即可觸發):');
+      data.push(commands.map((command) => command.name).join('\n'));
+      data.push(`\n使用\`${prefix}help [指令名稱]\`獲得指令詳細說明`);
+
+      // return msg.author
+      //   .send(data, { split: true })
+      //   .then(() => {
+      //     if (msg.channel.type === 'dm') return;
+      //     msg.reply("I've sent you a DM with all my commands!");
+      //   })
+      //   .catch((error) => {
+      //     console.error(`Could not send help DM to ${msg.author.tag}.\n`, error);
+      //     msg.reply("it seems like I can't DM you! Do you have DMs disabled?");
+      //   });
+    }
     const name = args[0].toLowerCase();
-    const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+    const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
 
     if (!command) {
-      return message.reply('that\'s not a valid command!');
+      return msg.reply('沒有這條指令(或許是反應指令?)');
     }
 
-    data.push(`**Name:** ${command.name}`);
+    data.push(`**指令名稱:** ${command.name}`);
 
-    if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-    if (command.description) data.push(`**Description:** ${command.description}`);
-    if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+    if (command.aliases) data.push(`**指令別名:**${command.aliases.join(', ')}`);
+    if (command.description) data.push(`**說明:**${command.description}`);
+    if (command.usage) data.push(`**使用方法:**${prefix}${command.name} ${command.usage}`);
+    if (command.cooldown) data.push(`**冷卻時間:**${command.cooldown}秒`);
 
-    data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
-
-    message.channel.send(data, { split: true });
+    msg.channel.send(data, { split: true });
   },
-}; */
+};
 
-const Discord = require('discord.js');
+/* const Discord = require('discord.js');
 module.exports = {
   name: 'help',
   description: 'Help Menu',
@@ -64,5 +82,4 @@ module.exports = {
       .setFooter('Copyright © 結城あやの From SJ Bots');
     msg.channel.send(help);
   },
-};
-
+}; */

@@ -51,19 +51,13 @@ holo.on('message', (msg) => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) {
     if (msg.content === '標我') {
       if (msg.channel.id !== '819553695766413334') msg.channel.send('請至<#819553695766413334>使用');
-      else holo.commands.get('tag').execute(msg);
+      // else holo.commands.get('tag').execute(msg);
       // } else {
-      // if (msg.author.id === '607446184847605800') {
-      // msg.channel.send('我完全不想理你=.=');
-      // } else if (msg.author.id === '573089564051111937') {
-      // msg.channel.send('再說');
-      // } else if (msg.author.id === '277389659947008001') {
-      // msg.channel.send('作者還敢玩啊');
-      // } else if (msg.author.id === '487804795902492712') {
-      // msg.channel.send('你不要以為你開小號我就不會發現');
-      // } else {
-      // holo.commands.get('tag').execute(msg);
-      // }
+      // if (msg.author.id === '607446184847605800') msg.channel.send('我完全不想理你=.=');
+      // else if (msg.author.id === '573089564051111937') msg.channel.send('再說');
+      // else if (msg.author.id === '277389659947008001') msg.channel.send('作者還敢玩啊');
+      // else if (msg.author.id === '487804795902492712') msg.channel.send('你不要以為你開小號我就不會發現');
+      // else holo.commands.get('tag').execute(msg);
       // }
     } else if (msg.content === 'shig') holo.commands.get('shig').execute(msg);
     else if (msg.content === 'ui') holo.commands.get('ui').execute(msg);
@@ -105,7 +99,7 @@ holo.on('message', (msg) => {
     }
 
     try {
-      command.execute(msg, args, connection, prefix, command);
+      command.execute(msg, args, prefix, connection, command);
     } catch (error) {
       msg.channel.send(`<@277389659947008001>Bot炸啦\n<@487804795902492712>Bot炸啦\n\`\`\`${error}\`\`\``);
     }

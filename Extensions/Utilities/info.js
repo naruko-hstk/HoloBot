@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 module.exports = {
   name: 'info',
-  description: 'Ping!',
+  description: 'Get info',
+  usage: '[user]',
   execute(msg, args) {
     if (!args.length) {
       let target = msg.author;

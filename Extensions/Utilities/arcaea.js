@@ -4,7 +4,7 @@ module.exports = {
   description: 'Arcaea難度表速查',
   args: true,
   usage: '<難度> <等級>',
-  execute(msg, args, connection, prefix, command) {
+  execute(msg, args, prefix, connection, command) {
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
     if (args[0] === 'past') {
       if (args[1] === '9+') {

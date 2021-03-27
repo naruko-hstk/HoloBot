@@ -3,7 +3,7 @@ module.exports = {
   name: 'fragments',
   description: '查詢fragments點數數',
   usage: '[add] <目標(請標記)> <數值>',
-  execute(msg, args, connection) {
+  execute(msg, args, prefix, connection) {
     if (!args.length) {
       connection.query(`SELECT * FROM chaosjudge.fragment WHERE ID = '${msg.author.id}';`, (err, rows) => {
         if (err) throw err;

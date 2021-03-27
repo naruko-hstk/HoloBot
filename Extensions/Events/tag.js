@@ -51,7 +51,7 @@ module.exports = {
       '偏不要',
       '想得美',
       '我拒絕',
-      '想太多'
+      '想太多',
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     msg.channel.send(randomMessage);
