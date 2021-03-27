@@ -8,7 +8,6 @@ module.exports = {
 		const { commands } = msg.client;
 
 		if (!args.length) {
-			console.log('有觸發');
 			data.push('這是我能使用的指令列表(部分為反映指令無須前綴即可觸發):');
 			data.push(commands.map((command) => command.name).join('\n'));
 			data.push(`使用\`${prefix}help [指令名稱]\`獲得指令詳細說明`);
