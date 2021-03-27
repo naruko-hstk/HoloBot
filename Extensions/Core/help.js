@@ -5,15 +5,15 @@ module.exports = {
   usage: '[command name]',
   cooldown: 5,
   execute(msg, args, prefix) {
-    console.log(prefix);
     const data = [];
     const { commands } = msg.client;
 
     if (!args.length) {
+      console.log('有觸發');
       data.push('這是我能使用的指令列表(部分為反映指令無須前綴即可觸發):');
       data.push(commands.map((command) => command.name).join('\n'));
-      data.push(`\n使用\`${prefix}help [指令名稱]\`獲得指令詳細說明`);
-
+      data.push(`使用\`${prefix}help [指令名稱]\`獲得指令詳細說明`);
+      msg.channel.send(data, { split: true });
       // return msg.author
       //   .send(data, { split: true })
       //   .then(() => {
@@ -25,21 +25,23 @@ module.exports = {
       //     msg.reply("it seems like I can't DM you! Do you have DMs disabled?");
       //   });
     }
-    const name = args[0].toLowerCase();
-    const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
+    else {
+      const name = args[0].toLowerCase();
+      const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
 
-    if (!command) {
-      return msg.reply('沒有這條指令(或許是反應指令?)');
+      if (!command) {
+        return msg.reply('沒有這條指令(或許是反應指令?)');
+      }
+
+      data.push(`**指令名稱:** ${command.name}`);
+
+      if (command.aliases) data.push(`**指令別名:**${command.aliases.join(', ')}`);
+      if (command.description) data.push(`**說明:**${command.description}`);
+      if (command.usage) data.push(`**使用方法:**${prefix}${command.name} ${command.usage}`);
+      if (command.cooldown) data.push(`**冷卻時間:**${command.cooldown}秒`);
+
+      msg.channel.send(data, { split: true });
     }
-
-    data.push(`**指令名稱:** ${command.name}`);
-
-    if (command.aliases) data.push(`**指令別名:**${command.aliases.join(', ')}`);
-    if (command.description) data.push(`**說明:**${command.description}`);
-    if (command.usage) data.push(`**使用方法:**${prefix}${command.name} ${command.usage}`);
-    if (command.cooldown) data.push(`**冷卻時間:**${command.cooldown}秒`);
-
-    msg.channel.send(data, { split: true });
   },
 };
 
