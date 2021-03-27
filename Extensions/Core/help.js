@@ -30,7 +30,7 @@ module.exports = {
       const command = commands.get(name) || commands.find((c) => c.aliases && c.aliases.includes(name));
 
       if (!command) {
-        return msg.reply('沒有這條指令(或許是反應指令?)');
+        return msg.reply('沒有這條指令');
       }
 
       data.push(`**指令名稱:** ${command.name}`);
