@@ -3,6 +3,7 @@ module.exports = {
   name: 'info',
   description: 'Get info',
   usage: '[user]',
+  guildOnly: true,
   execute(msg, args) {
     if (!args.length) {
       let target = msg.author;
