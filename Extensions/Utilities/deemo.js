@@ -3,6 +3,7 @@ module.exports = {
 	name: 'deemo',
 	description: 'Deemo難度表速查',
 	args: true,
+	aliases: ['種樹遊戲'],
 	usage: '<難度> [等級]',
 	execute(msg, args, prefix, connection, command) {
 		const list = [];

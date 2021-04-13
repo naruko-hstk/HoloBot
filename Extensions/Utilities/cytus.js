@@ -3,6 +3,7 @@ module.exports = {
 	name: 'cytus',
 	description: 'Cytus難度表速查',
 	args: true,
+	aliases: ['那個葡萄串'],
 	usage: '<難度> <等級>',
 	execute(msg, args, prefix, connection, command) {
 		const list = [];
