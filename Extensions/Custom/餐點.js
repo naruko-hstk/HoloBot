@@ -2,7 +2,7 @@ module.exports = {
   name: '餐點',
   description: '食物合輯',
   aliases: ['午餐ㄘ啥', '午餐吃啥', '午餐？', '午餐?', '晚餐ㄘ啥', '晚餐吃啥', '晚餐？', '晚餐?'],
-  execute(msg) {
+  execute(msg, args, prefix, command, author, master) {
     const messages = [
       '拉麵',
       '烏龍麵',

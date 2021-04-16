@@ -3,7 +3,8 @@ module.exports = {
   name: 'cp',
   description: '查詢CP點數數',
   usage: '[add] <目標(請標記)> <數值>',
-  execute(msg, args, prefix, connection) {
+  needSQL: true,
+  execute(msg, args, prefix, command, author, master, connection) {
     if (!args.length) {
       connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${msg.author.id}';`, (err, rows) => {
         if (err) throw err;

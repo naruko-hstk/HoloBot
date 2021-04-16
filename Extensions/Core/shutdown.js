@@ -2,7 +2,7 @@ module.exports = {
 	name: 'shutdown',
 	description: 'shutdown bot',
 	aliases: ['poweroff'],
-	execute(msg) {
+	execute(msg, args, prefix, command, author, master) {
 		if (msg.author.id === '277389659947008001' || msg.author.id === '487804795902492712' || msg.author.id === '826327097945489408') {
 			msg.reply('Goodbye!');
 			process.exit(0);

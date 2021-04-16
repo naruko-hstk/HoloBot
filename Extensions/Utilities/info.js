@@ -4,7 +4,7 @@ module.exports = {
   description: 'Get info',
   usage: '[user]',
   guildOnly: true,
-  execute(msg, args) {
+  execute(msg, args, prefix, command, author, master) {
     if (!args.length) {
       let target = msg.author;
       let img = target.avatarURL({ format: 'png', size: 4096 });

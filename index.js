@@ -27,16 +27,18 @@ for (const folder of commandFolders) {
   }
 }
 
-//Connect to DB
-const connection = mysql.createConnection({
+//Test Connection
+const testdb = mysql.createConnection({
   host: address,
   user: account,
   password: password,
   database: database,
 });
-connection.connect((err) => {
+testdb.connect((err) => {
   if (err) throw err;
-  console.log('資料庫已成功連線!');
+  console.log('正在測試資料庫連線...\n資料庫已成功連線!');
+  testdb.end();
+  console.log('測試完畢!\n已將資料庫斷線')
 });
 
 //Actions of bot ready
@@ -127,11 +129,32 @@ holo.on('message', async (msg) => {
 
         return msg.reply(reply);
       }
-
-      try {
-        command.execute(msg, args, prefix, connection, command);
-      } catch (error) {
-        msg.channel.send(`<@${author}>Bot炸啦\n<@${master}>Bot炸啦\n\`\`\`${error}\`\`\``);
+      if (command.needSQL) {
+        try {
+          const connection = mysql.createConnection({
+            host: address,
+            user: account,
+            password: password,
+            database: database,
+          });
+          connection.connect((err) => {
+            if (err) throw err;
+            console.log('資料庫已成功連線!');
+            command.execute(msg, args, prefix, command, author, master, connection);
+            console.log('查詢完畢！\n已將資料庫斷線');
+            connection.end();
+          });
+          // return msg.reply('由於SQL Server尚未上線\n無法使用此功能');
+        }
+        catch (error) {
+          msg.channel.send(`<@${author}>Bot炸啦\n<@${master}>Bot炸啦\n\`\`\`${error}\`\`\``);
+        }
+      } else {
+        try {
+          command.execute(msg, args, prefix, command, author, master);
+        } catch (error) {
+          msg.channel.send(`<@${author}>Bot炸啦\n<@${master}>Bot炸啦\n\`\`\`${error}\`\`\``);
+        }
       }
     }
   }

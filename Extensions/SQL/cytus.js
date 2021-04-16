@@ -5,7 +5,8 @@ module.exports = {
 	args: true,
 	// aliases: ['那個葡萄串'],
 	usage: '<難度> <等級>',
-	execute(msg, args, prefix, connection, command) {
+	needSQL: true,
+	execute(msg, args, prefix, command, author, master, connection) {
 		const list = [];
 		const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
 		if (args[0] === 'easy') {

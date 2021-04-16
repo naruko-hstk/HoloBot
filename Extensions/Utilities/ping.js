@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: 'ping',
   description: 'Ping!',
-  execute(msg) {
+  execute(msg, args, prefix, command, author, master) {
     const ping = new Discord.MessageEmbed()
       .setColor('#0F1D57')
       .setTitle('Pong!')

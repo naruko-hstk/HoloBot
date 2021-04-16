@@ -1,7 +1,7 @@
 module.exports = {
   name: '標我',
   description: 'Just tag',
-  execute(msg) {
+  execute(msg, args, prefix, command, author, master) {
     const messages = [
       `${msg.author}`,
       `${msg.author}`,

@@ -1,7 +1,7 @@
 module.exports = {
   name: '弟弟',
   description: '結城あやの提供',
-  execute(msg) {
+  execute(msg, args, prefix, command, author, master) {
     const messages = [
       '一種可愛的生物',
       '一種可愛的生物',

@@ -3,7 +3,7 @@ module.exports = {
   description: '顯示指令幫助',
   aliases: ['h', 'commands'],
   usage: '[指令名稱]',
-  execute(msg, args, prefix) {
+  execute(msg, args, prefix, command, author, master) {
     const data = [];
     const { commands } = msg.client;
 
