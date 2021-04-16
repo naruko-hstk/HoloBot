@@ -3,7 +3,7 @@ module.exports = {
 	name: 'arcaea',
 	description: 'Arcaea難度表速查',
 	args: true,
-	aliases: ['sdvx'],
+	// aliases: ['sdvx'],
 	usage: '<難度> <等級>',
 	execute(msg, args, prefix, connection, command) {
 		const list = [];
@@ -26,7 +26,6 @@ module.exports = {
 			} else if (args[1] === '10+') {
 				connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PastLevel = 10.7;`, (err, rows) => {
 					if (err) throw err;
-					console.log(rows.length);
 					if (rows.length < 1) msg.channel.send(nodata);
 					else {
 						list.push(`共有**${rows.length}**首曲子：\n`);
@@ -71,7 +70,6 @@ module.exports = {
 			} else if (args[1] === '10+') {
 				connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PresentLevel = 10.7;`, (err, rows) => {
 					if (err) throw err;
-					console.log(rows.length);
 					if (rows.length < 1) msg.channel.send(nodata);
 					else {
 						list.push(`共有**${rows.length}**首曲子：\n`);
@@ -116,7 +114,6 @@ module.exports = {
 			} else if (args[1] === '10+') {
 				connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE FutureLevel = 10.7;`, (err, rows) => {
 					if (err) throw err;
-					console.log(rows.length);
 					if (rows.length < 1) msg.channel.send(nodata);
 					else {
 						list.push(`共有**${rows.length}**首曲子：\n`);
@@ -161,7 +158,6 @@ module.exports = {
 			} else if (args[1] === '10+') {
 				connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE BeyondLevel = 10.7;`, (err, rows) => {
 					if (err) throw err;
-					console.log(rows.length);
 					if (rows.length < 1) msg.channel.send(nodata);
 					else {
 						list.push(`共有**${rows.length}**首曲子：\n`);

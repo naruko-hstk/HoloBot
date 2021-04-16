@@ -3,7 +3,7 @@ module.exports = {
 	name: 'voez',
 	description: 'VOEZ難度表速查',
 	args: true,
-	aliases: ['過氣遊戲'],
+	// aliases: ['過氣遊戲'],
 	usage: '<難度> [等級]',
 	execute(msg, args, prefix, connection, command) {
 		const list = [];

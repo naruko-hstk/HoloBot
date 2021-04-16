@@ -1,15 +1,15 @@
 const Discord = require('discord.js');
 module.exports = {
-	name: 'cytusii',
-	description: 'Cytus II難度表速查',
+	name: 'lanota',
+	description: 'Lanota難度表速查',
 	args: true,
-	aliases: ['那個葡萄串2'],
-	usage: '<難度> <等級>',
+	// aliases: ['里莫的洗衣機'],
+	usage: '<難度> [等級]',
 	execute(msg, args, prefix, connection, command) {
 		const list = [];
 		const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
-		if (args[0] === 'easy') {
-			connection.query(`SELECT SongName FROM chaosjudge.cytusii WHERE EasyLevel = ${parseInt(args[1])};`, (err, rows) => {
+		if (args[0] === 'whisper') {
+			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE WhisperLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -22,8 +22,8 @@ module.exports = {
 					msg.channel.send(list);
 				}
 			});
-		} else if (args[0] === 'hard') {
-			connection.query(`SELECT SongName FROM chaosjudge.cytusii WHERE HardLevel = ${parseInt(args[1])};`, (err, rows) => {
+		} else if (args[0] === 'acoustic') {
+			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE AcousticLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -36,8 +36,8 @@ module.exports = {
 					msg.channel.send(list);
 				}
 			});
-		} else if (args[0] === 'chaos') {
-			connection.query(`SELECT SongName FROM chaosjudge.cytusii WHERE ChaosLevel = ${parseInt(args[1])};`, (err, rows) => {
+		} else if (args[0] === 'ultra') {
+			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE UltraLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -50,8 +50,8 @@ module.exports = {
 					msg.channel.send(list);
 				}
 			});
-		} else if (args[0] === 'glitch') {
-			connection.query(`SELECT SongName FROM chaosjudge.cytusii WHERE GlitchLevel = ${parseInt(args[1])};`, (err, rows) => {
+		} else if (args[0] === 'master') {
+			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE MasterLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {

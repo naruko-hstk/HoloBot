@@ -8,7 +8,7 @@ const interactionchannel = process.env.interactionchannel.toString();
 const address = process.env.address;
 const account = process.env.account;
 const password = process.env.password;
-const database = database;
+const database = process.env.database;
 
 //include area
 const Discord = require('discord.js');
@@ -37,7 +37,6 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log('資料庫已成功連線!');
-  connection.close();
 });
 
 //Actions of bot ready
