@@ -6,11 +6,11 @@ module.exports = {
 	// aliases: ['里莫的洗衣機'],
 	usage: '<難度> [等級]',
 	needSQL: true,
-	execute(msg, args, prefix, command, author, master, connection) {
+	async execute(msg, args, prefix, command, author, master, connection) {
 		const list = [];
 		const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
 		if (args[0] === 'whisper') {
-			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE WhisperLevel = ${parseInt(args[1])};`, (err, rows) => {
+			await connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE WhisperLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -24,7 +24,7 @@ module.exports = {
 				}
 			});
 		} else if (args[0] === 'acoustic') {
-			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE AcousticLevel = ${parseInt(args[1])};`, (err, rows) => {
+			await connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE AcousticLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -38,7 +38,7 @@ module.exports = {
 				}
 			});
 		} else if (args[0] === 'ultra') {
-			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE UltraLevel = ${parseInt(args[1])};`, (err, rows) => {
+			await connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE UltraLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -52,7 +52,7 @@ module.exports = {
 				}
 			});
 		} else if (args[0] === 'master') {
-			connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE MasterLevel = ${parseInt(args[1])};`, (err, rows) => {
+			await connection.query(`SELECT SongName FROM chaosjudge.lanota WHERE MasterLevel = ${parseInt(args[1])};`, (err, rows) => {
 				if (err) throw err;
 				if (rows.length < 1) msg.channel.send(nodata);
 				else {
@@ -65,6 +65,6 @@ module.exports = {
 					msg.channel.send(list);
 				}
 			});
-		} else msg.channel.send(`這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``);
+		} else await msg.channel.send(`這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``);
 	},
 };

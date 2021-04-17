@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 module.exports = {
   name: 'cp',
-  description: '查詢CP點數數',
+  description: '查詢CP點數',
   usage: '[add] <目標(請標記)> <數值>',
   needSQL: true,
-  execute(msg, args, prefix, command, author, master, connection) {
+  async execute(msg, args, prefix, command, author, master, connection) {
     if (!args.length) {
-      connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${msg.author.id}';`, (err, rows) => {
+      await connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${parseInt(msg.author.id)}';`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) {
           const nocp = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('您未持有CP點數').setDescription('為何不多參與活動賺點呢？').setFooter('Copyright © 結城あやの From SJ Bots');
@@ -18,8 +18,8 @@ module.exports = {
         }
       });
     } else if (args[0] === 'add') {
-      let targetID = msg.mentions.users.first().id;
-      connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${targetID}';`, (err, rows) => {
+      let targetID = msg.mentions.users.first().id.replace(/[\\<>@#&!]/g, "");
+      await connection.query(`SELECT * FROM chaosjudge.cp WHERE ID = '${targetID}';`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) connection.query(`INSERT INTO chaosjudge.cp (ID, CygamesPoint) VALUES('${targetID}', '${args[2]}');`);
         else {
