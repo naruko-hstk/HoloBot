@@ -11,10 +11,14 @@ module.exports = {
         if (rows.length < 1) {
           const nocp = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('您未持有CP點數').setDescription('為何不多參與活動賺點呢？').setFooter('Copyright © 結城あやの From SJ Bots');
           msg.channel.send(nocp);
+          console.log('查詢完畢！\n已將資料庫斷線');
+          connection.end();
         } else {
           let CygamesPointcount = rows[0].CygamesPoint;
           const cpinfo = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('您持有的CP點數總數為:').setDescription(`${CygamesPointcount}`).setFooter('Copyright © 結城あやの From SJ Bots');
           msg.channel.send(cpinfo);
+          console.log('查詢完畢！\n已將資料庫斷線');
+          connection.end();
         }
       });
     } else if (args[0] === 'add') {
@@ -28,6 +32,8 @@ module.exports = {
         }
         const cpupdated = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('系統通知').setDescription('已完成fragments點數操作').setFooter('Copyright © 結城あやの From SJ Bots');
         msg.channel.send(cpupdated);
+        console.log('更新完畢！\n已將資料庫斷線');
+        connection.end();
       });
     } else msg.reply(`無效參數${args[0]}`);
   },

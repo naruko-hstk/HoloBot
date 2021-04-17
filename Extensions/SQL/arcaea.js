@@ -22,6 +22,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else if (args[1] === '10+') {
@@ -36,6 +38,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else {
@@ -50,6 +54,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			}
@@ -66,6 +72,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else if (args[1] === '10+') {
@@ -80,6 +88,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else {
@@ -94,6 +104,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			}
@@ -110,6 +122,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else if (args[1] === '10+') {
@@ -124,6 +138,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else {
@@ -138,6 +154,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			}
@@ -154,6 +172,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else if (args[1] === '10+') {
@@ -168,6 +188,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			} else {
@@ -182,6 +204,8 @@ module.exports = {
 							list.push(songs);
 						}
 						msg.channel.send(list);
+						console.log('查詢完畢！\n已將資料庫斷線');
+						connection.end();
 					}
 				});
 			}

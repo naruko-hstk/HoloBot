@@ -137,12 +137,12 @@ holo.on('message', async (msg) => {
             password: password,
             database: database,
           });
-          connection.connect((err) => {
+          connection.connect(async (err) => {
             if (err) throw err;
             console.log('資料庫已成功連線!');
-            command.execute(msg, args, prefix, command, author, master, connection);
-            console.log('查詢完畢！\n已將資料庫斷線');
-            connection.end();
+            await command.execute(msg, args, prefix, command, author, master, connection);
+            // console.log('查詢完畢！\n已將資料庫斷線');
+            // connection.end();
           });
           // return msg.reply('由於SQL Server尚未上線\n無法使用此功能');
         }
