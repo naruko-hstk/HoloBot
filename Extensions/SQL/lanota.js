@@ -21,8 +21,6 @@ module.exports = {
 						list.push(songs);
 					}
 					msg.channel.send(list);
-					console.log('查詢完畢！\n已將資料庫斷線');
-					connection.end();
 				}
 			});
 		} else if (args[0] === 'acoustic') {
@@ -37,8 +35,6 @@ module.exports = {
 						list.push(songs);
 					}
 					msg.channel.send(list);
-					console.log('查詢完畢！\n已將資料庫斷線');
-					connection.end();
 				}
 			});
 		} else if (args[0] === 'ultra') {
@@ -53,8 +49,6 @@ module.exports = {
 						list.push(songs);
 					}
 					msg.channel.send(list);
-					console.log('查詢完畢！\n已將資料庫斷線');
-					connection.end();
 				}
 			});
 		} else if (args[0] === 'master') {
@@ -69,10 +63,10 @@ module.exports = {
 						list.push(songs);
 					}
 					msg.channel.send(list);
-					console.log('查詢完畢！\n已將資料庫斷線');
-					connection.end();
 				}
 			});
 		} else await msg.channel.send(`這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``);
+		connection.end();
+		console.log('查詢完畢！\n已將資料庫斷線');
 	},
 };
