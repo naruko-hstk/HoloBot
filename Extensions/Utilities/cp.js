@@ -32,8 +32,8 @@ module.exports = {
         }
         const cpupdated = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('系統通知').setDescription('已完成fragments點數操作').setFooter('Copyright © 結城あやの From SJ Bots');
         await msg.channel.send(cpupdated);
-        // connection.end();
-        // console.log('更新完畢！\n已將資料庫斷線');
+        connection.end();
+        console.log('更新完畢！\n已將資料庫斷線');
       });
     } else await msg.reply(`無效參數${args[0]}`);
   },
