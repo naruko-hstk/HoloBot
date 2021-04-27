@@ -25,7 +25,7 @@ module.exports = {
           }
         });
       } else if (args[1] === '10+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PastLevel = 10.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = 10.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -39,7 +39,7 @@ module.exports = {
           }
         });
       } else {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PastLevel = ${parseInt(args[1])};`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = ${parseInt(args[1])};`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -55,7 +55,7 @@ module.exports = {
       }
     } else if (args[0] === 'present') {
       if (args[1] === '9+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PresentLevel = 9.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 9.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -69,7 +69,7 @@ module.exports = {
           }
         });
       } else if (args[1] === '10+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PresentLevel = 10.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 10.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -83,7 +83,7 @@ module.exports = {
           }
         });
       } else {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE PresentLevel = ${parseInt(args[1])};`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = ${parseInt(args[1])};`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -99,7 +99,7 @@ module.exports = {
       }
     } else if (args[0] === 'future') {
       if (args[1] === '9+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE FutureLevel = 9.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 9.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -113,7 +113,7 @@ module.exports = {
           }
         });
       } else if (args[1] === '10+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE FutureLevel = 10.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 10.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -127,7 +127,7 @@ module.exports = {
           }
         });
       } else {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE FutureLevel = ${parseInt(args[1])};`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = ${parseInt(args[1])};`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -143,7 +143,7 @@ module.exports = {
       }
     } else if (args[0] === 'beyond') {
       if (args[1] === '9+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE BeyondLevel = 9.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 9.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -157,7 +157,7 @@ module.exports = {
           }
         });
       } else if (args[1] === '10+') {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE BeyondLevel = 10.7;`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 10.7;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
@@ -171,7 +171,7 @@ module.exports = {
           }
         });
       } else {
-        await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseInt(args[1])};`, (err, rows) => {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseInt(args[1])};`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
           else {
