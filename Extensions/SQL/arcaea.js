@@ -10,7 +10,7 @@ module.exports = {
     const list = [];
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
     if (args[0] === 'past' || args[0] === 'pst') {
-      if (!args[1]) {
+      /* if (!args[1]) {
         await connection.query(`SELECT SongName, PastLevel, Side FROM chaosjudge.arcaea WHERE PastLevel != 0;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
@@ -24,53 +24,53 @@ module.exports = {
             msg.channel.send(list);
           }
         });
+      } else { */
+      if (args[1] === '9+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = 9.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
+      } else if (args[1] === '10+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = 10.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
       } else {
-        if (args[1] === '9+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = 9.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = ${parseInt(args[1])};`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
             }
-          });
-        } else if (args[1] === '10+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = 10.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        } else {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = ${parseInt(args[1])};`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        }
+            msg.channel.send(list);
+          }
+        });
       }
+      // }
     } else if (args[0] === 'present' || args[0] === 'prs') {
-      if (!args[1]) {
+      /* if (!args[1]) {
         await connection.query(`SELECT SongName, PresentLevel, Side FROM chaosjudge.arcaea WHERE PresentLevel != 0;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
@@ -84,53 +84,53 @@ module.exports = {
             msg.channel.send(list);
           }
         });
+      } else { */
+      if (args[1] === '9+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 9.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
+      } else if (args[1] === '10+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 10.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
       } else {
-        if (args[1] === '9+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 9.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = ${parseInt(args[1])};`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
             }
-          });
-        } else if (args[1] === '10+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = 10.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        } else {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = ${parseInt(args[1])};`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        }
+            msg.channel.send(list);
+          }
+        });
       }
+      // }
     } else if (args[0] === 'future' || args[0] === 'ftr') {
-      if (!args[1]) {
+      /* if (!args[1]) {
         await connection.query(`SELECT SongName, FutureLevel, Side FROM chaosjudge.arcaea WHERE FutureLevel != 0;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
@@ -144,53 +144,53 @@ module.exports = {
             msg.channel.send(list);
           }
         });
+      } else { */
+      if (args[1] === '9+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 9.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
+      } else if (args[1] === '10+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 10.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
       } else {
-        if (args[1] === '9+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 9.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = ${parseInt(args[1])};`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
             }
-          });
-        } else if (args[1] === '10+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = 10.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        } else {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = ${parseInt(args[1])};`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        }
+            msg.channel.send(list);
+          }
+        });
       }
+      // }
     } else if (args[0] === 'beyond' || args[0] === 'byd') {
-      if (!args[1]) {
+      /* if (!args[1]) {
         await connection.query(`SELECT SongName, BeyondLevel, Side FROM chaosjudge.arcaea WHERE BeyondLevel != 0;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
@@ -204,51 +204,51 @@ module.exports = {
             msg.channel.send(list);
           }
         });
+      } else { */
+      if (args[1] === '9+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 9.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
+      } else if (args[1] === '10+') {
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 10.7;`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
+            }
+            msg.channel.send(list);
+          }
+        });
       } else {
-        if (args[1] === '9+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 9.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
+        await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseInt(args[1])};`, (err, rows) => {
+          if (err) throw err;
+          if (rows.length < 1) msg.channel.send(nodata);
+          else {
+            list.push(`共有**${rows.length}**首曲子：\n`);
+            let end = rows.length;
+            for (var counter = 0; counter < end; counter++) {
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
+              list.push(songs);
             }
-          });
-        } else if (args[1] === '10+') {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = 10.7;`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        } else {
-          await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseInt(args[1])};`, (err, rows) => {
-            if (err) throw err;
-            if (rows.length < 1) msg.channel.send(nodata);
-            else {
-              list.push(`共有**${rows.length}**首曲子：\n`);
-              let end = rows.length;
-              for (var counter = 0; counter < end; counter++) {
-                let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
-                list.push(songs);
-              }
-              msg.channel.send(list);
-            }
-          });
-        }
+            msg.channel.send(list);
+          }
+        });
       }
+      // }
     } else if (args[0] === '光' || args[0] === 'Light' || args[0] === 'hikari') {
       await connection.query(`SELECT SongName, PastLevel, PresentLevel, FutureLevel, BeyondLevel FROM chaosjudge.arcaea WHERE Side = "光";`, (err, rows) => {
         if (err) throw err;
