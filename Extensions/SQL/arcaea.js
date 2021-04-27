@@ -18,7 +18,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + "LV." + rows[counter].PastLevel + "(" + rows[counter].Side + ")";
+              let songs = rows[counter].SongName + " LV." + rows[counter].PastLevel + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -78,7 +78,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + "LV." + rows[counter].PresentLevel + "(" + rows[counter].Side + ")";
+              let songs = rows[counter].SongName + " LV." + rows[counter].PresentLevel + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -138,7 +138,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + "LV." + rows[counter].FutureLevel + "(" + rows[counter].Side + ")";
+              let songs = rows[counter].SongName + " LV." + rows[counter].FutureLevel + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -198,7 +198,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + "LV." + rows[counter].BeyondLevel + "(" + rows[counter].Side + ")";
+              let songs = rows[counter].SongName + " LV." + rows[counter].BeyondLevel + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
