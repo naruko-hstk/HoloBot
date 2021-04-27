@@ -4,7 +4,7 @@ module.exports = {
   description: 'Arcaea難度表速查',
   args: true,
   // aliases: ['sdvx'],
-  usage: '<難度> <等級>',
+  usage: '<難度> <等級>或<屬性>',
   needSQL: true,
   async execute(msg, args, prefix, command, author, master, connection) {
     const list = [];
@@ -185,6 +185,32 @@ module.exports = {
           }
         });
       }
+    } else if (args[1] === '光' || args[1] === 'Light') {
+      await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE Side = "光";`, (err, rows) => {
+        if (err) throw err;
+        else {
+          list.push(`共有**${rows.length}**首曲子：\n`);
+          let end = rows.length;
+          for (var counter = 0; counter < end; counter++) {
+            let songs = rows[counter].SongName;
+            list.push(songs);
+          }
+          msg.channel.send(list);
+        }
+      });
+    } else if (args[1] === '対立' || args[1] === 'Conflict' || args[1] === '對立') {
+      await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE Side = "対立";`, (err, rows) => {
+        if (err) throw err;
+        else {
+          list.push(`共有**${rows.length}**首曲子：\n`);
+          let end = rows.length;
+          for (var counter = 0; counter < end; counter++) {
+            let songs = rows[counter].SongName;
+            list.push(songs);
+          }
+          msg.channel.send(list);
+        }
+      });
     } else await msg.channel.send(`這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``);
     connection.end();
     console.log('查詢完畢！\n已將資料庫斷線');
