@@ -18,7 +18,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -32,7 +32,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -46,7 +46,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -62,7 +62,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -76,7 +76,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -90,7 +90,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -106,7 +106,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -120,7 +120,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -134,7 +134,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -150,7 +150,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -164,7 +164,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
@@ -178,7 +178,7 @@ module.exports = {
             list.push(`共有**${rows.length}**首曲子：\n`);
             let end = rows.length;
             for (var counter = 0; counter < end; counter++) {
-              let songs = rows[counter].SongName + rows[counter].Side;
+              let songs = rows[counter].SongName + "(" + rows[counter].Side + ")";
               list.push(songs);
             }
             msg.channel.send(list);
