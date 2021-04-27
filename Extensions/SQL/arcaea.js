@@ -185,7 +185,7 @@ module.exports = {
           }
         });
       }
-    } else if (args[1] === '光' || args[1] === 'Light') {
+    } else if (args[0] === '光' || args[1] === 'Light') {
       await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE Side = "光";`, (err, rows) => {
         if (err) throw err;
         else {
@@ -198,7 +198,7 @@ module.exports = {
           msg.channel.send(list);
         }
       });
-    } else if (args[1] === '対立' || args[1] === 'Conflict' || args[1] === '對立') {
+    } else if (args[0] === '対立' || args[1] === 'Conflict' || args[1] === '對立') {
       await connection.query(`SELECT SongName FROM chaosjudge.arcaea WHERE Side = "対立";`, (err, rows) => {
         if (err) throw err;
         else {
