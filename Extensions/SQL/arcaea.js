@@ -256,14 +256,14 @@ module.exports = {
           list.push(`共有**${rows.length}**首曲子：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            if (rows[counter].BeyondLevel !== 0) {
-              let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel + ' BYD:' + rows[counter].BeyondLevel;
-              list.push(songs);
-            }
-            else {
-              let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
-              list.push(songs);
-            }
+            // if (rows[counter].BeyondLevel !== 0) {
+            // let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel + ' BYD:' + rows[counter].BeyondLevel;
+            // list.push(songs);
+            // }
+            // else {
+            let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
+            list.push(songs);
+            // }
           }
           msg.channel.send(list);
         }
@@ -275,14 +275,14 @@ module.exports = {
           list.push(`共有**${rows.length}**首曲子：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            if (rows[counter].BeyondLevel !== 0) {
-              let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel + ' BYD:' + rows[counter].BeyondLevel;
-              list.push(songs);
-            }
-            else {
-              let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
-              list.push(songs);
-            }
+            // if (rows[counter].BeyondLevel !== 0) {
+            // let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel + ' BYD:' + rows[counter].BeyondLevel;
+            // list.push(songs);
+            // }
+            // else {
+            let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
+            list.push(songs);
+            // }
           }
           msg.channel.send(list);
         }
