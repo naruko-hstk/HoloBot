@@ -190,7 +190,7 @@ module.exports = {
         }
       }
     } else if (args[0] === 'beyond' || args[0] === 'byd') {
-      if (!args) {
+      if (!args[1]) {
         await connection.query(`SELECT SongName, BeyondLevel, Side FROM chaosjudge.arcaea WHERE BeyondLevel != 0;`, (err, rows) => {
           if (err) throw err;
           if (rows.length < 1) msg.channel.send(nodata);
