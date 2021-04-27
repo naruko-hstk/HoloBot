@@ -55,7 +55,7 @@ holo.on('ready', () => {
 
 //command handler
 holo.on('message', async (msg) => {
-  const args = msg.content.slice(prefix.length).trim().split(/ +/);
+  const args = msg.content.slice(prefix.length).trim().split(/ +/).toLowerCase();
   const commandName = args.shift().toLowerCase();
 
   const command = holo.commands.get(commandName) || holo.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
