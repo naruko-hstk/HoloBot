@@ -9,7 +9,7 @@ module.exports = {
   async execute(msg, args, prefix, command, author, master, connection) {
     const list = [];
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
-    if (args[0] === 'past') {
+    if (args[0] === 'past' || args[0] === 'pst') {
       if (!args[1]) {
         await connection.query(`SELECT SongName, PastLevel, Side FROM chaosjudge.arcaea WHERE PastLevel != 0;`, (err, rows) => {
           if (err) throw err;
@@ -69,7 +69,7 @@ module.exports = {
           });
         }
       }
-    } else if (args[0] === 'present') {
+    } else if (args[0] === 'present' || args[0] === 'prs') {
       if (!args[1]) {
         await connection.query(`SELECT SongName, PresentLevel, Side FROM chaosjudge.arcaea WHERE PresentLevel != 0;`, (err, rows) => {
           if (err) throw err;
@@ -129,7 +129,7 @@ module.exports = {
           });
         }
       }
-    } else if (args[0] === 'future') {
+    } else if (args[0] === 'future' || args[0] === 'ftr') {
       if (!args[1]) {
         await connection.query(`SELECT SongName, FutureLevel, Side FROM chaosjudge.arcaea WHERE FutureLevel != 0;`, (err, rows) => {
           if (err) throw err;
@@ -189,7 +189,7 @@ module.exports = {
           });
         }
       }
-    } else if (args[0] === 'beyond') {
+    } else if (args[0] === 'beyond' || args[0] === 'byd') {
       if (!args) {
         await connection.query(`SELECT SongName, BeyondLevel, Side FROM chaosjudge.arcaea WHERE BeyondLevel != 0;`, (err, rows) => {
           if (err) throw err;
@@ -249,7 +249,7 @@ module.exports = {
           });
         }
       }
-    } else if (args[0] === '光' || args[0] === 'Light') {
+    } else if (args[0] === '光' || args[0] === 'Light' || args[0] === 'hikari') {
       await connection.query(`SELECT SongName, PastLevel, PresentLevel, FutureLevel, BeyondLevel FROM chaosjudge.arcaea WHERE Side = "光";`, (err, rows) => {
         if (err) throw err;
         else {
@@ -262,7 +262,7 @@ module.exports = {
           msg.channel.send(list);
         }
       });
-    } else if (args[0] === '対立' || args[0] === 'Conflict' || args[0] === '對立') {
+    } else if (args[0] === '対立' || args[0] === 'Conflict' || args[0] === '對立' || args[0] === 'tairitsu') {
       await connection.query(`SELECT SongName, PastLevel, PresentLevel, FutureLevel, BeyondLevel FROM chaosjudge.arcaea WHERE Side = "対立";`, (err, rows) => {
         if (err) throw err;
         else {
