@@ -13,7 +13,7 @@ module.exports = {
     if (args[0] === 'easy' || args[0] === 'ez') {
       await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE EasyLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
-        if (rows.length < 1) await msg.channel.send(nodata);
+        if (rows.length < 1) msg.channel.send(nodata);
         else {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
@@ -28,7 +28,7 @@ module.exports = {
     } else if (args[0] === 'normal' || args[0] === 'nr') {
       await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE NormalLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
-        if (rows.length < 1) await msg.channel.send(nodata);
+        if (rows.length < 1) msg.channel.send(nodata);
         else {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
@@ -43,7 +43,7 @@ module.exports = {
     } else if (args[0] === 'hard' || args[0] === 'hd') {
       await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE HardLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
-        if (rows.length < 1) await msg.channel.send(nodata);
+        if (rows.length < 1) msg.channel.send(nodata);
         else {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
@@ -58,7 +58,7 @@ module.exports = {
     } else if (args[0] === 'expert' || args[0] === 'ex') {
       await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE ExpertLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
-        if (rows.length < 1) await msg.channel.send(nodata);
+        if (rows.length < 1) msg.channel.send(nodata);
         else {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
@@ -73,7 +73,7 @@ module.exports = {
     } else if (args[0] === 'special' || args[0] === 'sp') {
       await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE SpecialLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
-        if (rows.length < 1) await msg.channel.send(nodata);
+        if (rows.length < 1) msg.channel.send(nodata);
         else {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
