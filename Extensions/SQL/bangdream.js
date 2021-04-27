@@ -21,8 +21,8 @@ module.exports = {
             let songs = rows[counter].id + "：" + rows[counter].SongName;
             list.push(songs);
           }
-          await msg.channel.send(list);
-          await msg.channel.send(play);
+          msg.channel.send(list);
+          msg.channel.send(play);
         }
       });
     } else if (args[0] === 'normal' || args[0] === 'nr') {
@@ -36,8 +36,8 @@ module.exports = {
             let songs = rows[counter].id + "：" + rows[counter].SongName;
             list.push(songs);
           }
-          await msg.channel.send(list);
-          await msg.channel.send(play);
+          msg.channel.send(list);
+          msg.channel.send(play);
         }
       });
     } else if (args[0] === 'hard' || args[0] === 'hd') {
@@ -51,8 +51,8 @@ module.exports = {
             let songs = rows[counter].id + "：" + rows[counter].SongName;
             list.push(songs);
           }
-          await msg.channel.send(list);
-          await msg.channel.send(play);
+          msg.channel.send(list);
+          msg.channel.send(play);
         }
       });
     } else if (args[0] === 'expert' || args[0] === 'ex') {
@@ -66,8 +66,8 @@ module.exports = {
             let songs = rows[counter].id + "：" + rows[counter].SongName;
             list.push(songs);
           }
-          await msg.channel.send(list);
-          await msg.channel.send(play);
+          msg.channel.send(list);
+          msg.channel.send(play);
         }
       });
     } else if (args[0] === 'special' || args[0] === 'sp') {
@@ -81,8 +81,8 @@ module.exports = {
             let songs = rows[counter].id + "：" + rows[counter].SongName;
             list.push(songs);
           }
-          await msg.channel.send(list);
-          await msg.channel.send(play);
+          msg.channel.send(list);
+          msg.channel.send(play);
         }
       });
     } else await msg.channel.send(`這條指令的用法應該要像這樣: \`${prefix}${command.name} ${command.usage}\``);
