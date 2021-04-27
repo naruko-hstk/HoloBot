@@ -10,7 +10,7 @@ module.exports = {
     const list = [];
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
     if (args[0] === 'easy') {
-      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE Easylevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE EasyLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -24,7 +24,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'hard') {
-      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE Hardlevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE HardLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -38,7 +38,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'special') {
-      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE Speciallevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT SongName FROM chaosjudge.voez WHERE SpecialLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
