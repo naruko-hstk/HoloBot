@@ -10,7 +10,7 @@ module.exports = {
     const list = [];
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的歌`).setFooter('Copyright © 結城あやの From SJ Bots');
     if (args[0] === 'easy' || args[0] === 'ez') {
-      await connection.query(`SELECT id, SongNameFROM chaosjudge.bangdream WHERE EasyLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE EasyLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -24,7 +24,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'normal' || args[0] === 'nr') {
-      await connection.query(`SELECT id, SongNameFROM chaosjudge.bangdream WHERE NormalLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE NormalLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -38,7 +38,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'hard' || args[0] === 'hd') {
-      await connection.query(`SELECT id, SongNameFROM chaosjudge.bangdream WHERE HardLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE HardLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -52,7 +52,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'expert' || args[0] === 'ex') {
-      await connection.query(`SELECT id, SongNameFROM chaosjudge.bangdream WHERE ExpertLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE ExpertLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -66,7 +66,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'special' || args[0] === 'sp') {
-      await connection.query(`SELECT id, SongNameFROM chaosjudge.bangdream WHERE SpecialLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.bangdream WHERE SpecialLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
