@@ -261,7 +261,7 @@ module.exports = {
             // list.push(songs);
             // }
             // else {
-            let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
+            let songs = rows[counter].SongName/* + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel*/;
             list.push(songs);
             // }
           }
@@ -280,7 +280,7 @@ module.exports = {
             // list.push(songs);
             // }
             // else {
-            let songs = rows[counter].SongName + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel;
+            let songs = rows[counter].SongName/* + ' PST:' + rows[counter].PastLevel + ' PRS:' + rows[counter].PresentLevel + ' FTR:' + rows[counter].FutureLevel*/;
             list.push(songs);
             // }
           }
