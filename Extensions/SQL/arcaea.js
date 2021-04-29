@@ -11,7 +11,7 @@ module.exports = {
     const nodata = new Discord.MessageEmbed().setColor('#0F1D57').setTitle('查無資料').setDescription(`該難度無等級${args[1]}的曲子`).setFooter('Copyright © 結城あやの From SJ Bots');
     const level = args[1].replace('+', '.7');
     if (args[0] === 'past' || args[0] === 'pst') {
-      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = ${parseInt(level)};`, (err, rows) => {
+      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PastLevel = ${parseFloat(level)};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -25,7 +25,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'present' || args[0] === 'prs') {
-      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = ${parseInt(level)};`, (err, rows) => {
+      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE PresentLevel = ${parseFloat(level)};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -40,7 +40,7 @@ module.exports = {
       });
     } else if (args[0] === 'future' || args[0] === 'ftr') {
 
-      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = ${parseInt(level)};`, (err, rows) => {
+      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE FutureLevel = ${parseFloat(level)};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
@@ -54,7 +54,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'beyond' || args[0] === 'byd') {
-      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseInt(level)};`, (err, rows) => {
+      await connection.query(`SELECT SongName, Side FROM chaosjudge.arcaea WHERE BeyondLevel = ${parseFloat(level)};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
