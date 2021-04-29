@@ -18,7 +18,7 @@ module.exports = {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            let songs = 'ID：' + rows[counter].id + '**' + rows[counter].SongName + '**';
+            let songs = 'ID：' + rows[counter].id + '	**' + rows[counter].SongName + '**';
             list.push(songs);
           }
           msg.channel.send(list);
@@ -33,7 +33,7 @@ module.exports = {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            let songs = 'ID：' + rows[counter].id + '**' + rows[counter].SongName + '**';
+            let songs = 'ID：' + rows[counter].id + '	**' + rows[counter].SongName + '**';
             list.push(songs);
           }
           msg.channel.send(list);
@@ -48,7 +48,7 @@ module.exports = {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            let songs = 'ID：' + rows[counter].id + '**' + rows[counter].SongName + '**';
+            let songs = 'ID：' + rows[counter].id + '	**' + rows[counter].SongName + '**';
             list.push(songs);
           }
           msg.channel.send(list);
@@ -63,7 +63,7 @@ module.exports = {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            let songs = 'ID：' + rows[counter].id + '**' + rows[counter].SongName + '**';
+            let songs = 'ID：' + rows[counter].id + '	**' + rows[counter].SongName + '**';
             list.push(songs);
           }
           msg.channel.send(list);
@@ -78,7 +78,7 @@ module.exports = {
           list.push(`共有**${rows.length}**首歌：\n`);
           let end = rows.length;
           for (var counter = 0; counter < end; counter++) {
-            let songs = 'ID：' + rows[counter].id + '**' + rows[counter].SongName + '**';
+            let songs = 'ID：' + rows[counter].id + '	**' + rows[counter].SongName + '**';
             list.push(songs);
           }
           msg.channel.send(list);
