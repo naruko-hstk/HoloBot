@@ -72,7 +72,7 @@ module.exports = {
         }
       });
     } else if (args[0] === 'master' || args[0] === 'ma' || args[0] === 'mas') {
-      await connection.query(`SELECT id, SongName FROM chaosjudge.projectsekai WHERE SpecialLevel = ${parseInt(args[1])};`, (err, rows) => {
+      await connection.query(`SELECT id, SongName FROM chaosjudge.projectsekai WHERE MasterLevel = ${parseInt(args[1])};`, (err, rows) => {
         if (err) throw err;
         if (rows.length < 1) msg.channel.send(nodata);
         else {
